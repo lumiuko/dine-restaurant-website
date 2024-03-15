@@ -8,7 +8,7 @@ export default function FeaturedSection({ title, text, image, imageAlt }) {
           <Picture image={image} imageAlt={imageAlt} />
           <img
             src="/patterns/pattern-lines.svg"
-            className="hidden md:group-last:block absolute bottom-14 -right-14 xl:-right-12 xl:bottom-auto xl:top-[17.625rem]"
+            className="hidden md:group-last:block absolute bottom-14 -right-14 xl:bottom-auto xl:top-[17.625rem] xl:right-[-7.125rem]"
             alt=""
           />
         </div>
