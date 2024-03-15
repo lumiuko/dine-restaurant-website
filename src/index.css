@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  min-height: 100dvh;
+}
+
+#root {
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+@layer base {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.fade-enter,
+.slide-enter {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.slide-enter-active {
+  opacity: 1;
+}
+
+.fade-exit,
+.slide-exit {
+  opacity: 1;
+}
+
+.fade-exit-active,
+.slide-exit-active {
+  opacity: 0;
+}
+
+.slide-enter {
+  translate: -20px;
+}
+
+.slide-enter-active {
+  translate: 0;
+}
+
+.slide-exit {
+  translate: 0;
+}
+
+.slide-exit-active {
+  translate: 20px;
+}
+
+.slide-enter-active,
+.slide-exit-active,
+.fade-enter-active,
+.fade-exit-active {
+  transition: opacity 300ms, translate 300ms;
+}
+
+.pattern::before {
+  display: none;
+  content: '';
+  position: absolute;
+  width: 95px;
+  height: 1px;
+  top: calc(var(--current-tab, 0) * 40px + 13px);
+  left: -30px;
+  translate: -100% 0;
+  background-color: #9e7f66;
+  transition: top 0.25s ease;
+}
+
+@media (min-width: 1280px) {
+  .pattern::before {
+    display: block;
+  }
+}
