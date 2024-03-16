@@ -60,7 +60,13 @@ export default function Reservation() {
                 ref={formRef}
               >
                 <div className="flex flex-col">
-                  <Input {...register('name', { required: true })} type="text" placeholder="Name" isError={!!errors.name} />
+                  <Input
+                    {...register('name', { required: true })}
+                    type="text"
+                    placeholder="Name"
+                    isError={!!errors.name}
+                    aria-label="Your name"
+                  />
                   {errors.name && <p className="mt-3 ml-4 text-[0.625rem] leading-[0.5625rem] text-red">This field is required</p>}
                 </div>
                 <div className="flex flex-col">
@@ -68,6 +74,7 @@ export default function Reservation() {
                     {...register('email', { required: true, pattern: emailRegex })}
                     type="email"
                     placeholder="Email"
+                    aria-label="Email"
                     isError={!!errors.email}
                   />
                   {errors.email && (
@@ -83,33 +90,25 @@ export default function Reservation() {
                     )}
                   </div>
                   <div className="flex gap-[0.875rem] md:max-w-[290px] md:gap-4">
-                    <label htmlFor="month" className="sr-only">
-                      Month
-                    </label>
                     <Input
                       {...register('date.month', { required: true, min: 1, max: 12 })}
                       type="number"
                       placeholder="MM"
+                      aria-label="Month"
                       isError={!!errors.date?.month}
                     />
-
-                    <label htmlFor="day" className="sr-only">
-                      Day
-                    </label>
                     <Input
                       {...register('date.day', { required: true, min: 1, max: 31 })}
                       type="number"
                       placeholder="DD"
+                      aria-label="Day"
                       isError={!!errors.date?.day}
                     />
-
-                    <label htmlFor="year" className="sr-only">
-                      Year
-                    </label>
                     <Input
                       {...register('date.year', { required: true, min: new Date().getFullYear(), max: new Date().getFullYear() + 1 })}
                       type="number"
                       placeholder="YYYY"
+                      aria-label="Year"
                       isError={!!errors.date?.year}
                     />
                   </div>
@@ -123,26 +122,20 @@ export default function Reservation() {
                     )}
                   </div>
                   <div className="flex gap-[0.875rem] md:max-w-[290px] md:gap-4">
-                    <label htmlFor="hour" className="sr-only">
-                      Hour
-                    </label>
                     <Input
                       {...register('time.hour', { required: true, min: 1, max: 12 })}
                       type="number"
                       placeholder="09"
+                      aria-label="Hour"
                       isError={!!errors.time?.hour}
                     />
-
-                    <label htmlFor="day" className="sr-only">
-                      Minute
-                    </label>
                     <Input
                       {...register('time.minute', { required: true, min: 0, max: 59 })}
                       type="number"
                       placeholder="00"
+                      aria-label="Minute"
                       isError={!!errors.time?.minute}
                     />
-
                     <Controller
                       control={control}
                       name="time.type"
