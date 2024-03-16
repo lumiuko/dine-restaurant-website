@@ -33,7 +33,7 @@ export default function TabbedSection() {
       key={index}
       className={`uppercase tracking-s md:w-[225px] md:pb-2 xl:w-auto xl:pb-0 hover:text-gray transition-all relative ${
         currentTabIndex === index
-          ? 'text-gray ml-[2px] active after:absolute after:bg-beaver after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-[1px] xl:after:hidden'
+          ? 'text-gray xl:ml-[2px] after:absolute after:bg-beaver after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-12 after:h-[1px] xl:after:hidden'
           : ''
       }`}
       onClick={() => setCurrentTabIndex(index)}
