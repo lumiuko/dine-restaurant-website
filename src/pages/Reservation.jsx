@@ -37,7 +37,7 @@ export default function Reservation() {
               <img src="/logo.svg" className="h-[32px] md:h-[40px]" alt="Dine logo" />
             </Link>
           </div>
-          <div className="mt-11 flex flex-col justify-between gap-[5.625rem] items-center md:gap-[2.375rem] md:mt-[4.375rem] xl:mt-[9.625rem] xl:flex-row xl:items-start">
+          <div className="mt-11 flex flex-col justify-between gap-[5.625rem] items-center md:gap-[2.375rem] md:mt-[4.375rem] xl:mt-[9.75rem] xl:flex-row xl:items-start">
             <div className="text-center text-white xl:max-w-[445px] xl:text-left">
               <h1 className="text-[2rem] leading-[2.5rem] tracking-[-0.4px] font-light md:text-l md:leading-[4rem] md:tracking-[-0.6px] xl:text-xl xl:leading-xl xl:tracking-xl">
                 Reservations
@@ -55,7 +55,7 @@ export default function Reservation() {
             <div className="relative w-full max-w-[540px] mb-[-28rem] md:-mb-80 xl:mb-[-12.75rem]">
               <form
                 autoComplete="off"
-                className="relative z-10 bg-white p-8 flex flex-col gap-[2.125rem] text-m leading-s shadow-default md:p-12 "
+                className="relative z-10 bg-white p-8 flex flex-col text-m leading-s shadow-default md:p-12 xl:pt-[3.125rem]"
                 onSubmit={handleSubmit(onSubmit)}
                 ref={formRef}
               >
@@ -67,9 +67,11 @@ export default function Reservation() {
                     isError={!!errors.name}
                     aria-label="Your name"
                   />
-                  {errors.name && <p className="mt-3 ml-4 text-[0.625rem] leading-[0.5625rem] text-red">This field is required</p>}
+                  <p className={`pt-3 pl-4 text-[0.625rem] leading-[0.5625rem] text-red ${errors.name ? 'visible' : 'invisible'}`}>
+                    This field is required
+                  </p>
                 </div>
-                <div className="flex flex-col">
+                <div className="mt-5 flex flex-col">
                   <Input
                     {...register('email', { required: true, pattern: emailRegex })}
                     type="email"
@@ -77,12 +79,12 @@ export default function Reservation() {
                     aria-label="Email"
                     isError={!!errors.email}
                   />
-                  {errors.email && (
-                    <p className="mt-3 ml-4 text-[0.625rem] leading-[0.5625rem] text-red">Please use a valid email address</p>
-                  )}
+                  <p className={`mt-3 ml-4 text-[0.625rem] leading-[0.5625rem] text-red ${errors.email ? 'visible' : 'invisible'}`}>
+                    Please use a valid email address
+                  </p>
                 </div>
 
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                <div className="mt-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div style={{ color: Object.values(errors.date ?? {}).some(Boolean) ? '#B54949' : '' }}>
                     <p className=" md:flex-shrink-0">Pick a date</p>
                     {Object.values(errors.date ?? {}).some(Boolean) && (
@@ -114,7 +116,7 @@ export default function Reservation() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                <div className="mt-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div className="flex flex-col" style={{ color: Object.values(errors.time ?? {}).some(Boolean) ? '#B54949' : '' }}>
                     <p className="md:flex-shrink-0">Pick a time</p>
                     {Object.values(errors.time ?? {}).some(Boolean) && (
@@ -149,7 +151,7 @@ export default function Reservation() {
                   name="numberOfPeople"
                   defaultValue={4}
                   render={({ field: { value, onChange } }) => (
-                    <div className="flex justify-between items-center px-5 pb-4 border-b border-line md:mt-1">
+                    <div className="mt-9 mb-8 flex justify-between items-center px-5 pb-4 border-b border-line">
                       <button
                         type="button"
                         aria-label="Decrease people count"
